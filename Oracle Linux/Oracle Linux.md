@@ -35,4 +35,17 @@ Oracle Linux เป็น Distribution หนึ่งของ Linux ที่�
 
 ## System Requirement
 
+* Memory Minimum 1 GB and Maximum 64 GB
+* Disk Space Mnimum 1 GB and Maximum 4 TB
+
+# Command Cheat Sheet
+
+Find Port
+```bash
+netstat -anp | grep 
+```
+
+
+
+
 
