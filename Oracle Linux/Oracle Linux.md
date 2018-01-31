@@ -29,7 +29,7 @@ Oracle Linux เป็น Distribution หนึ่งของ Linux ที่�
 หรือจะโหลดเป็น Hands-On Labs เพื่อฝึกการใช้งาน สามารถ Donload ผ่านทาง [Oracle Software Delivery Cloud](https://edelivery.oracle.com/osdc/faces/SoftwareDelivery)
 โดยเลือก Version และสถาปัตยกรรม 32-bit หรือ 64-bit ให้ตรงกับที่เราต้องการ ใน LAB นี้จะติดตั้ง Oracle Linux Version 6.8
 
-![](/Images/01.png)
+![](/Oracle&nbsp;Linux/Images/01.png)
 
 ## System Requirement
 
