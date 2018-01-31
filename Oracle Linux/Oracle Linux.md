@@ -8,8 +8,9 @@ Documentation for Oracle DBA beginner
 
 * Download
 * System Requirement
-* Install
-* Configuration
+* Pre-Install Oracle Database
+* Install Oracle Database
+* Post-Install Oracle Database
 * Command Cheat Sheet
 
 ## Download
@@ -25,7 +26,7 @@ Oracle Linux เป็น Distribution หนึ่งของ Linux based on R
 * Memory Minimum 1 GB and Maximum 64 GB
 * Disk Space Mnimum 1 GB and Maximum 4 TB
 
-## Install
+## Pre-Install Oracle Database
 
 Host File (/etc/hosts)
 ```bash
@@ -80,6 +81,20 @@ LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
 CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
 ```
 
+## Install Oracle Database
+
+Run Oracle Universal Installler (OUI)
+```bash
+./runInstaller
+```
+
+## Post-Install Oracle Database
+
+Set Instance
+```bash
+DB11G:/u01/app/oracle/product/11.2.0/db_1:Y
+```
+
 ## Command Cheat Sheet
 
 * Option short use (-) and long use (--)
@@ -114,6 +129,13 @@ service [name] start
 service [name] stop
 service [name] status
 ```
+
+## Credit
+
+https://oracle-base.com/articles/linux/oracle-linux-6-installation
+https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6
+
+
 
 
 
