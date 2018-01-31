@@ -132,8 +132,8 @@ service [name] status
 
 ## Credit
 
-https://oracle-base.com/articles/linux/oracle-linux-6-installation
-https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6
+* https://oracle-base.com/articles/linux/oracle-linux-6-installation
+* https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6
 
 
 
