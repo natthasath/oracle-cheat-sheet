@@ -107,20 +107,20 @@ netstat -anp | grep port_number
 Create Directory
 ```bash
 mkdir [option] [name]
- -m --mode		set permission file mode (chmod)
- -p --parent		make parent directory (relative and absolute path)
- -v --verbose		print message
- -z --context=CTX	set SELinux security
+ -m --mode		    :set permission file mode (chmod)
+ -p --parent		:make parent directory (relative and absolute path)
+ -v --verbose		:print message
+ -z --context=CTX	:set SELinux security
 ```
 
 Package
 ```bash
-yum update
-yum install
-yum remove
-yum history
-yum clean
-yum list
+# yum update
+# yum install
+# yum remove
+# yum history
+# yum clean
+# yum list
 ```
 
 Service
@@ -134,16 +134,3 @@ service [name] status
 
 * https://oracle-base.com/articles/linux/oracle-linux-6-installation
 * https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6
-
-
-
-
-
-
-
-
-
-
-
-
-
