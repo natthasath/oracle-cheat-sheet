@@ -24,7 +24,6 @@ sqlplus /nolog
 
 Connect
 ```bash
-SQL> conn / as sysdba
 SQL> connect / as sysdba
 SQL> connect sys/[password]@[ORACLE_SID] as sysdba
 ```

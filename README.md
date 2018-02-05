@@ -20,6 +20,11 @@ Documentation for Oracle DBA beginner
 * [Download and Install]
 * [Config]
 
+#### Export/Import Oracle Database
+* [Data Pump]
+* [RMAN]
+* [Golden Gate]
+
 #### DBA Check List
 * 
 
