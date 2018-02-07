@@ -30,6 +30,9 @@ impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp l
 ```
 
 ## Without Password and Directory
+
+Default directory is $ORACLE_BASE/admin/[ORACLE_SID]/dpdump/[file_name].dmp
+
 ```bash
 expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
