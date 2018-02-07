@@ -35,4 +35,5 @@ expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].lo
 impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 ```
 
-## Credit
+## Reference
+https://oracle-base.com/articles/10g/oracle-data-pump-10g
