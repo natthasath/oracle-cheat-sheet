@@ -31,8 +31,8 @@ impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp l
 
 ## Without Password and Directory
 ```bash
-expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes ;
-impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes ;
+expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
+impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 ```
 
 ## Credit
