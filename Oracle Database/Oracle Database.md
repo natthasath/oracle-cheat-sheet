@@ -26,6 +26,7 @@ Connect
 ```bash
 SQL> conn / as sysdba
 SQL> connect / as sysdba
+SQL> connect sys/[password] as sysdba
 SQL> connect sys/[password]@[ORACLE_SID] as sysdba
 ```
 
@@ -48,6 +49,11 @@ SQL> select instance_name, status from v$instance ;
 Show Date
 ```bash
 SQL> select sysdate from dual ;
+```
+
+Show User
+```bash
+SQL> show user ;
 ```
 
 Show SGA

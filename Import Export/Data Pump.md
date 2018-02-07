@@ -13,20 +13,26 @@ Data pump is a server based technology which enables very high speed import and 
 
 ## Table Export/Import
 ```bash
-expdp scott/tiger@DB11G tables=EMP,DEPT directory=TEST_DIR dumpfile=EMP_DEPT.dmp logfile=expdpEMP_DEPT.log
-impdp scott/tiger@DB11G tables=EMP,DEPT directory=TEST_DIR dumpfile=EMP_DEPT.dmp logfile=impdpEMP_DEPT.log
+expdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=[table_name].log
+impdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=[table_name].log
 ```
 
 ## Schema Export/Import
 ```bash
-expdp scott/tiger@db10g schemas=SCOTT directory=TEST_DIR dumpfile=SCOTT.dmp logfile=expdpSCOTT.log
-impdp scott/tiger@db10g schemas=SCOTT directory=TEST_DIR dumpfile=SCOTT.dmp logfile=impdpSCOTT.log
+expdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=[schema_name].log
+impdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=[schema_name].log
 ```
 
 ## Database Export/Import
 ```bash
-expdp system/password@db10g full=Y directory=TEST_DIR dumpfile=DB10G.dmp logfile=expdpDB10G.log
-impdp system/password@db10g full=Y directory=TEST_DIR dumpfile=DB10G.dmp logfile=impdpDB10G.log
+expdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp logfile=expdpDB10G.log
+impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp logfile=impdpDB10G.log
+```
+
+## Without Password and Directory
+```bash
+expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes ;
+impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes ;
 ```
 
 ## Credit
