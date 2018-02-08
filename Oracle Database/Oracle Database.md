@@ -6,6 +6,7 @@ Documentation for Oracle DBA beginner
 
 # Table of Content
 
+* Create Listener
 * Create Database
 * Start Stop Service
 * Network Connection
@@ -14,6 +15,37 @@ Documentation for Oracle DBA beginner
 * User and Security
 * SQL*Plus Command
 * Oracle Cheat Sheet
+
+## Create Listener
+
+NETCA (Net Configuration Assistant)
+```bash
+$ORACLE_HOME/bin/
+netca
+```
+
+## Create Database
+
+DBCA (Database Configuration Assistant)
+```bash
+$ORACLE_HOME/bin/
+./dbca
+```
+
+Database Character Set
+```bash
+TH8TISASCII - Thai Industrial Standard
+```
+
+Generate Database Create Script
+```bash
+$ORACLE_BASE/admin/[ORACLE_SID]/scripts
+```
+
+Save Report Create Database
+```bash
+$ORACLE_HOME/bin
+```
 
 ## SQL*Plus Command
 
@@ -61,6 +93,21 @@ Show SGA
 SQL> show sga
 ```
 
+Show Database Buffer Cache
+```bash
+SQL> show db_cache_size
+```
+
+Show Shared Pool
+```bash
+SQL> show shared_pool_size
+```
+
+Show Redo Log Buffer
+```bash
+SQL> show log_buffer
+```
+
 Show User tables
 ```bash
 SQL> select table_name from user_tables order by 1 ;
@@ -87,6 +134,16 @@ Update Pfile from SPfile
 SQL> create spfile from pfile
 ```
 
+Create User
+```bash
+SQL> create user demo identified by 1234;
+```
+
+Privilege User
+```bash
+SQL> grant session to demo
+```
+
 History
 ```bash
 SQL> set history on
@@ -98,7 +155,7 @@ SQL> clear history
 
 ## Command Cheat Sheet
 
-Listener
+LISTENER
 ```bash
 lsnrctl status
 lsnrctl start
@@ -137,7 +194,7 @@ ORCL =
   )
 ```
 
-Listener
+LISTENER
 ```bash
 $ORACLE_HOME/network/admin/listener.ora
 
@@ -177,6 +234,9 @@ $ORACLE_HOME/oc4j/j2ee/OC4J_DBConsole_ol6.lab.local_DB11G/
 $ORACLE_HOME/ol6.lab.local_DB11G
 
 หากยังไม่ได้ให้ทำการ Rebuild Enterprise Manager
+emctl stop dbconsole
+emca -deconfig dbcontrol db
+emca -repos recreate
 ```
 
 ## Credit

@@ -130,6 +130,11 @@ service [name] stop
 service [name] status
 ```
 
+Network
+```bash
+/etc/sysconfig/network-script/ifcfg-eth0
+```
+
 ## Credit
 
 * https://oracle-base.com/articles/linux/oracle-linux-6-installation
