@@ -18,7 +18,7 @@ Documentation for Oracle DBA beginner
 
 ## Create Listener
 
-NETCA (Net Configuration Assistant)
+* NETCA (Net Configuration Assistant)
 ```bash
 $ORACLE_HOME/bin/
 netca
@@ -26,23 +26,23 @@ netca
 
 ## Create Database
 
-DBCA (Database Configuration Assistant)
+* DBCA (Database Configuration Assistant)
 ```bash
 $ORACLE_HOME/bin/
 ./dbca
 ```
 
-Database Character Set
+* Database Character Set
 ```bash
 TH8TISASCII - Thai Industrial Standard
 ```
 
-Generate Database Create Script
+* Generate Database Create Script
 ```bash
 $ORACLE_BASE/admin/[ORACLE_SID]/scripts
 ```
 
-Save Report Create Database
+* Save Report Create Database
 ```bash
 $ORACLE_HOME/bin
 ```
@@ -80,78 +80,83 @@ SQL> startup pfile=''
 SQL> shutdown immediate
 ```
 
-Check Instance
-```bash
-SQL> select instance_name, status from v$instance ;
-```
-
-Show Date
-```bash
-SQL> select sysdate from dual ;
-```
-
-Show User
+#### Check Connect Database
+* Check User
 ```bash
 SQL> show user ;
 ```
 
-Show SGA
+* Check Instance
 ```bash
-SQL> show sga
+SQL> select instance_name, status from v$instance ;
 ```
 
-Show Database Buffer Cache
+* Check Date
 ```bash
-SQL> show db_cache_size
+SQL> select sysdate from dual ;
 ```
 
-Show Shared Pool
-```bash
-SQL> show shared_pool_size
-```
-
-Show Redo Log Buffer
-```bash
-SQL> show log_buffer
-```
-
-Show User tables
-```bash
-SQL> select table_name from user_tables order by 1 ;
-```
-
-Show Parameter
+#### Show Parameter
+* Show Parameter
 ```bash
 SQL> show parameter
 SQL> show parameter process
 ```
 
-Show Path Datafile
+* Show SGA
 ```bash
-SQL> select name from v$datafile;
+SQL> show sga
 ```
 
-Create SPfile from Pfile
+* Show Database Buffer Cache
 ```bash
-SQL> create pfile from spfile ;
+SQL> show db_cache_size
 ```
 
-Update Pfile from SPfile
+* Show Shared Pool
 ```bash
-SQL> create spfile from pfile
+SQL> show shared_pool_size
 ```
 
-Create User
+* Show Redo Log Buffer
+```bash
+SQL> show log_buffer
+```
+
+#### Manage User
+* Create User
 ```bash
 SQL> create user demo identified by 1234;
 ```
 
-Privilege User
+* Grant Privilege User
 ```bash
 SQL> grant session to demo
 ```
 
-History
+* Show User tables
+```bash
+SQL> select table_name from user_tables order by 1 ;
+```
+
+#### Manage pfile and spfile
+* Show Path Datafile
+```bash
+SQL> select name from v$datafile;
+```
+
+* Create spfile from pfile
+```bash
+SQL> create pfile from spfile ;
+```
+
+* Update pfile from spfile
+```bash
+SQL> create spfile from pfile
+```
+
+#### Log
+* History Query
 ```bash
 SQL> set history on
 SQL> show history
@@ -162,19 +167,19 @@ SQL> clear history
 
 ## Command Cheat Sheet
 
-LISTENER
+* LISTENER
 ```bash
 lsnrctl status
 lsnrctl start
 lsnrctl stop
 ```
 
-TNSPING
+* TNSPING
 ```bash
 tnsping orcl
 ```
 
-Enterprise Manager
+* Enterprise Manager
 ```bash
 emctl status dbconsole
 emctl start dbconsole
@@ -182,12 +187,12 @@ emctl stop dbconsole
 emctl getemhome
 ```
 
-Alert Log
+* Alert Log
 ```bash
 $ORACLE_BASE/diag/rdbms/orcl/orcl/trace/alert_orcl.log
 ```
 
-TNSNAMES
+* TNSNAMES
 ```bash
 $ORACLE_HOME/network/admin/tnsnames.ora
 
@@ -201,7 +206,7 @@ ORCL =
   )
 ```
 
-LISTENER
+* LISTENER
 ```bash
 $ORACLE_HOME/network/admin/listener.ora
 
@@ -215,26 +220,26 @@ LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Uninstall
+* Uninstall
 ```bash
 $ORACLE_HOME/deinstall/deinstall
 ```
 
 ## Failed Error
 
-Failed Start Listener
+* Failed Start Listener
 ```bash
 ไม่สามารถ Start Listener ได้ ให้ไปดูที่ไฟล์ listener ว่า config hostname และ port ถูกต้องหรือไม่
 ```
 
-Filed Start Database (pfile)
+* Filed Start Database (pfile)
 ```bash
 ไม่สามารถ Start Database ได้ ให้ไปสร้างไฟล์ pfile จาก spfile
 
 create pfile from spfile='/u01/app/oracle/product/11.2.0/db_1/dbs/spfileorcl.ora' ;
 ```
 
-Failed Start Enterprise Manager
+* Failed Start Enterprise Manager
 ```bash
 ไม่สามารถ Start Enterprise Manager ได้ ให้ไปแก้ชื่อไฟล์ 2 ที่ ของเดิม hostname เป็น localdomain และ ORACLE_SID เป็น orcl
 $ORACLE_HOME/oc4j/j2ee/OC4J_DBConsole_ol6.lab.local_DB11G/
@@ -246,7 +251,7 @@ emca -deconfig dbcontrol db
 emca -repos recreate
 ```
 
-Failed Stop Database
+* Failed Stop Database
 ```bash
 ไม่สามารถ Stop Database ได้ เพราะยังไม่ได้ Start
 SQL> shutdown immediate
