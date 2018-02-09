@@ -54,4 +54,20 @@ ORCL =
 emca -deconfig dbcontrol db -repos drop
 ```
 
+## Export Database
+```bash
+expdp \"/ as sysdba\" DUMPFILE=orcl.dmp LOGFILE=export_orcl.log FULL=YES ;
+```
+
+## SCP Copy
+```bash
+scp orcl.dmp oracle@ol6.lab.local:/u01/app/oracle/admin/orcl/dpdump
+```
+
+## Import Database
+```bash
+impdp \"/ as sysdba\" DUMPFILE=orcl.dmp LOGFILE=export_orcl.log FULL=YES ;
+```
+
 ## Credit
+http://www.dba-oracle.com/tips_oracle_export_utility.htm

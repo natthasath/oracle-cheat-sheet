@@ -49,12 +49,18 @@ $ORACLE_HOME/bin
 
 ## SQL*Plus Command
 
-Access SQL*Plus
+#### Access Database
+* Access not login
 ```bash
 sqlplus /nolog
 ```
 
-Connect
+* Access login as sysdba
+```bash
+sqlplus / as sysdba
+```
+
+* Connect Database in SQL*Plus
 ```bash
 SQL> conn / as sysdba
 SQL> connect / as sysdba
@@ -62,13 +68,14 @@ SQL> connect sys/[password] as sysdba
 SQL> connect sys/[password]@[ORACLE_SID] as sysdba
 ```
 
-Start Database
+#### Start Stop Database
+* Start Database
 ```bash
 SQL> startup
 SQL> startup pfile=''
 ```
 
-Stop Database
+* Stop Database
 ```bash
 SQL> shutdown immediate
 ```
@@ -239,4 +246,14 @@ emca -deconfig dbcontrol db
 emca -repos recreate
 ```
 
+Failed Stop Database
+```bash
+ไม่สามารถ Stop Database ได้ เพราะยังไม่ได้ Start
+SQL> shutdown immediate
+ORA-01034: ORACLE not available
+ORA-27101: shared memory realm does not exist
+Linux-x86_64 Error: 2: No such file or directory
+```
+
 ## Credit
+http://www.dba-oracle.com/

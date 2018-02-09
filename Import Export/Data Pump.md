@@ -13,20 +13,26 @@ Data pump is a server based technology which enables very high speed import and 
 
 ## Table Export/Import
 ```bash
-expdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=[table_name].log
-impdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=[table_name].log
+expdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=expdp[table_name].log
+impdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=impdp[table_name].log
 ```
 
 ## Schema Export/Import
 ```bash
-expdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=[schema_name].log
-impdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=[schema_name].log
+expdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=expdp[schema_name].log
+impdp sys/[password]@orcl schemas=[schema_name] directory=[directory_name] dumpfile=[schema_name].dmp logfile=impdp[schema_name].log
 ```
 
 ## Database Export/Import
 ```bash
-expdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp logfile=expdpDB10G.log
-impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp logfile=impdpDB10G.log
+expdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=orcl.dmp logfile=expdp_orcl.log
+impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=orcl.dmp logfile=impdp_orcl.log
+```
+
+## Parameter Export/Import
+```bash
+expdp sys/[password]@orcl full=Y directory=[directory_name] parfile=porcl.par logfile=expdp_porcl.log
+impdp sys/[password]@orcl full=Y directory=[directory_name] parfile=porcl.par logfile=impdp_porcl.log
 ```
 
 ## Without Password and Directory
@@ -34,8 +40,8 @@ impdp sys/[password]@orcl full=Y directory=[directory_name] dumpfile=DB10G.dmp l
 Default directory is $ORACLE_BASE/admin/[ORACLE_SID]/dpdump/[file_name].dmp
 
 ```bash
-expdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
-impdp \"/ as sysdba\" as sysdba dumpfile=[file_name].dmp logfile=[table_name].log full=yes
+expdp \"/ as sysdba\" dumpfile=[file_name].dmp logfile=[table_name].log full=yes
+impdp \"/ as sysdba\" dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 ```
 
 ## Reference
