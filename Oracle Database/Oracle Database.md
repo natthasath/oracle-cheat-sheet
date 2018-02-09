@@ -80,7 +80,7 @@ SQL> startup pfile=''
 SQL> shutdown immediate
 ```
 
-#### Check Connect Database
+#### Check Connection Database
 * Check User
 ```bash
 SQL> show user ;
@@ -96,7 +96,17 @@ SQL> select instance_name, status from v$instance ;
 SQL> select sysdate from dual ;
 ```
 
-#### Show Parameter
+#### Check Views and Tables Database
+* Check Object
+```bash
+SQL> select owner, object_name from all_objects ;
+SQL> select count(object_id) as sum from all_objects ;
+SQL> select count(object_id) as sum, object_type from all_objects group by object_type order by object_type asc ;
+SQL> select count(object_id) as sum, object_type from all_objects where object_type = 'TABLE' group by object_type ;
+SQL> select count(object_id) as sum, object_type from all_objects where object_type = 'VIEW' group by object_type ;
+```
+
+#### Show Parameters
 * Show Parameter
 ```bash
 SQL> show parameter
@@ -123,18 +133,30 @@ SQL> show shared_pool_size
 SQL> show log_buffer
 ```
 
-#### Manage User
+#### Manage Users
 * Create User
 ```bash
-SQL> create user demo identified by 1234;
+SQL> create user demo identified by 1234 ;
 ```
 
 * Grant Privilege User
 ```bash
-SQL> grant session to demo
+SQL> grant session to demo ;
 ```
 
-* Show User tables
+* Show All Users
+```bash
+SQL> select user_id, username, created from all_users ;   ## View all users of current user
+SQL> select user_id, username, created from dba_users ;   ## View all users of database and contains more columns than all_users
+SQL> select user_id, username, created from user_users ;  ## View current user and contains more columns than all_users
+```
+
+* Show Default Tablespace User
+```bash
+SQL> select user_id, username, default_tablespace from dba_users ;
+```
+
+* Show User Table
 ```bash
 SQL> select table_name from user_tables order by 1 ;
 ```
@@ -142,7 +164,7 @@ SQL> select table_name from user_tables order by 1 ;
 #### Manage pfile and spfile
 * Show Path Datafile
 ```bash
-SQL> select name from v$datafile;
+SQL> select name from v$datafile ;
 ```
 
 * Create spfile from pfile

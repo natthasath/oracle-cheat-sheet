@@ -28,41 +28,41 @@ Oracle Linux เป็น Distribution หนึ่งของ Linux based on R
 
 ## Pre-Install Oracle Database
 
-Host File (/etc/hosts)
+* Host File (/etc/hosts)
 ```bash
 127.0.0.1       localhost.localdomain  localhost
 192.168.0.181   ol6-112.localdomain    ol6-112
 ```
 
-Oracle Installation Prerequisites
+* Oracle Installation Prerequisites
 ```bash
 yum install oracle-rdbms-server-11gR2-preinstall
 yum update
 ```
 
-Set Password Oracle User
+* Set Password Oracle User
 ```bash
 passwd oracle
 ```
 
-Set SELinux (/etc/selinux/config)
+* Set SELinux (/etc/selinux/config)
 ```bash
 SELINUX=permissive
 ```
 
-Create Directory
+* Create Directory
 ```bash
 mkdir -p /u01/app/oracle/product/11.2.0/db_1
 chown -R oracle:oinstall /u01
 chmod -R 775 /u01
 ```
 
-Change Root to Oracle User
+* Change Root to Oracle User
 ```bash
 su oracle
 ```
 
-Bash Profile (.bash_profile)
+* Bash Profile (.bash_profile)
 ```
 # Oracle Settings
 TMP=/tmp; export TMP
@@ -83,28 +83,28 @@ CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
 
 ## Install Oracle Database
 
-Run Oracle Universal Installler (OUI)
+* Run Oracle Universal Installler (OUI)
 ```bash
 ./runInstaller
 ```
 
 ## Post-Install Oracle Database
 
-Set Instance
+* Set Instance
 ```bash
 DB11G:/u01/app/oracle/product/11.2.0/db_1:Y
 ```
 
 ## Command Cheat Sheet
 
-* Option short use (-) and long use (--)
+Option short use (-) and long use (--)
 
-Find Port
+* Find Port
 ```bash
 netstat -anp | grep port_number
 ```
 
-Create Directory
+* Create Directory
 ```bash
 mkdir [option] [name]
  -m --mode		    :set permission file mode (chmod)
@@ -113,7 +113,7 @@ mkdir [option] [name]
  -z --context=CTX	:set SELinux security
 ```
 
-Package
+* Package
 ```bash
 # yum update
 # yum install
@@ -123,16 +123,26 @@ Package
 # yum list
 ```
 
-Service
+* Service
 ```bash
 service [name] start
 service [name] stop
 service [name] status
 ```
 
-Network
+* Network
 ```bash
 /etc/sysconfig/network-script/ifcfg-eth0
+```
+
+* Create Alias
+```bash
+alias [name]='PATH'
+```
+
+* STTY Erase
+```bash
+stty erase ^H
 ```
 
 ## Credit
