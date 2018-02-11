@@ -8,6 +8,7 @@ Documentation for Oracle DBA beginner
 
 * Create Listener
 * Create Database
+* Create Alias
 * Start Stop Service
 * Network Connection
 * Database Interface
@@ -20,16 +21,16 @@ Documentation for Oracle DBA beginner
 
 * NETCA (Net Configuration Assistant)
 ```bash
-$ORACLE_HOME/bin/
-netca
+$ cd $ORACLE_HOME/bin/
+$ netca
 ```
 
 ## Create Database
 
 * DBCA (Database Configuration Assistant)
 ```bash
-$ORACLE_HOME/bin/
-./dbca
+$ cd $ORACLE_HOME/bin/
+$ ./dbca
 ```
 
 * Database Character Set
@@ -39,12 +40,33 @@ TH8TISASCII - Thai Industrial Standard
 
 * Generate Database Create Script
 ```bash
-$ORACLE_BASE/admin/[ORACLE_SID]/scripts
+$ cd $ORACLE_BASE/admin/$ORACLE_SID/scripts
 ```
 
 * Save Report Create Database
 ```bash
-$ORACLE_HOME/bin
+$ cd $ORACLE_HOME/bin
+```
+
+## Create Alias
+```bash
+$ vi .bash_profile
+-----------------------------
+alias network='cd $ORACLE_HOME/network/admin'
+alias trace='cd $ORACLE_BASE/diag/rdbms/$ORACLE_SSID/$ORACLE_SID/'
+
+alias alert='tail -100 $DBA/$ORACLE_SID/bdump/alert_$ORACLE_SID.log|more'
+alias arch='cd $DBA/$ORACLE_SID/arch'
+alias bdump='cd $DBA/$ORACLE_SID/bdump'
+alias cdump='cd $DBA/$ORACLE_SID/cdump'
+alias pfile='cd $DBA/$ORACLE_SID/pfile'
+alias udump='cd $DBA/$ORACLE_SID/udump'
+alias rm='rm -i'
+alias sid='env|grep -i sid'
+alias admin='cd $DBA/admin'
+alias logbook='/u01/app/oracle/admin/$ORACLE_SID/logbook'
+-----------------------------
+$ . ~/.bash_profile
 ```
 
 ## SQL*Plus Command
@@ -161,6 +183,12 @@ SQL> select user_id, username, default_tablespace from dba_users ;
 SQL> select table_name from user_tables order by 1 ;
 ```
 
+## Manage Object
+* Create Synonym
+```bash
+SQL> create synonym emp for scott.emp ;
+```
+
 #### Manage pfile and spfile
 * Show Path Datafile
 ```bash
@@ -187,7 +215,7 @@ SQL> history [number] edit
 SQL> clear history
 ```
 
-## Command Cheat Sheet
+## Oracle Cheat Sheet
 
 * LISTENER
 ```bash

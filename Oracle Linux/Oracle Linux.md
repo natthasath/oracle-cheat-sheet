@@ -132,16 +132,18 @@ service [name] status
 
 * Network
 ```bash
-/etc/sysconfig/network-script/ifcfg-eth0
+vi /etc/sysconfig/network-script/ifcfg-eth0
 ```
 
 * Create Alias
 ```bash
+vi .bash_profile
 alias [name]='PATH'
 ```
 
 * STTY Erase
 ```bash
+vi .bash_profile
 stty erase ^H
 ```
 
