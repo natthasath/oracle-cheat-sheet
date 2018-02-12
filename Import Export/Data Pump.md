@@ -44,5 +44,18 @@ expdp \"/ as sysdba\" dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 impdp \"/ as sysdba\" dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 ```
 
-## Reference
+## Impdp Parameter
+
+* TABLE_EXISTS_ACTION
+
+This action of import data when the table already exists in the database, the default value is skip.
+```bash
+TABLE_EXISTS_ACTION = {SKIP | APPEND | TRUNCATE | REPLACE}
+- SKIP (Default)    skip table already exists in the database, not best practise if you set content=data_only
+- APPEND            append is add new rows from dmp file, number and type of data must match
+- TRUNCATE
+- REPLACE
+```
+
+## Credit
 https://oracle-base.com/articles/10g/oracle-data-pump-10g

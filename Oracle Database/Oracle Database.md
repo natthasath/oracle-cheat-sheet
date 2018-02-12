@@ -126,6 +126,8 @@ SQL> select count(object_id) as sum from all_objects ;
 SQL> select count(object_id) as sum, object_type from all_objects group by object_type order by object_type asc ;
 SQL> select count(object_id) as sum, object_type from all_objects where object_type = 'TABLE' group by object_type ;
 SQL> select count(object_id) as sum, object_type from all_objects where object_type = 'VIEW' group by object_type ;
+SQL> select count(object_id) as sum, owner from all_objects where object_type = 'TABLE' group by owner ;
+SQL> select count(object_id) as sum, owner from all_objects where object_type = 'VIEW' group by owner ;
 ```
 
 #### Show Parameters
@@ -181,6 +183,16 @@ SQL> select user_id, username, default_tablespace from dba_users ;
 * Show User Table
 ```bash
 SQL> select table_name from user_tables order by 1 ;
+```
+
+* Show Tablespace
+```bash
+SQL> select tablespace_name from user_tablespaces ;
+```
+
+* Change Password
+```bash
+SQL> alter user demo identified by 1234 ;
 ```
 
 ## Manage Object
@@ -312,3 +324,4 @@ Linux-x86_64 Error: 2: No such file or directory
 
 ## Credit
 http://www.dba-oracle.com/
+https://docs.oracle.com/cd/B28359_01/em.111/b31207/oui7_opatch.htm#CEGCJGJD
