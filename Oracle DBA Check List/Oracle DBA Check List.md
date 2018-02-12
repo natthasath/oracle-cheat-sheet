@@ -1,5 +1,5 @@
-# DBA Check List
-Description job all task of Database Administrator (DBA) for check list seperate collection by risk level. You should use monitoring tools ex. (Oracle Enterprise Manager, Dell Foglight) but other job you should monitoring and managing yourself. It's include health check report every month.
+# Oracle DBA Check List
+Description job all task of Oracle Database Administrator (DBA) for check list seperate collection by risk level. You should use monitoring tools ex. (Oracle Enterprise Manager, Dell Foglight) but other job you should monitoring and managing yourself. It's include health check report every month.
 
 # Table of Content
 
