@@ -36,8 +36,8 @@ ADR_BASE_LISTENER = /u01/app/oracle
 
 ## Check Service LISTENER
 ```bash
-MEIS
-MEISXDB
+ORCL
+ORCLXDB
 ```
 
 ## Change TNSNAMES
