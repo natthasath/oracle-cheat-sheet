@@ -1,15 +1,24 @@
-# Oracle Clone
-Docmentation Clone Oracle Database for step by step
+# Oracle Clone Database
+Docmentation clone Oracle Database for step by step
 ```bash
 
 ```
 
 # Table of Content
 
+* Preparing to Clone Database
 * Change LISTENER
 * Change TNSNAMES
 * Change Hosts File
 * Change Hostname File
+
+## Preparing to Clone Database
+
+* Flash Recovery Area
+```bash
+SQL> select * from v$recovery_file_dest ;
+SQL> select * from v$recovery_area_usage ;
+```
 
 ## Change LISTENER
 ```bash
@@ -23,6 +32,12 @@ LISTENER =
   )
 
 ADR_BASE_LISTENER = /u01/app/oracle
+```
+
+## Check Service LISTENER
+```bash
+MEIS
+MEISXDB
 ```
 
 ## Change TNSNAMES

@@ -6,8 +6,8 @@ Documentation for Oracle DBA beginner
 
 # Table of Content
 
-* Create Listener
-* Create Database
+* Create & Delete Listener
+* Create & Delete Database
 * Create Alias
 * Start Stop Service
 * Network Connection
@@ -15,9 +15,10 @@ Documentation for Oracle DBA beginner
 * Storage Structure
 * User and Security
 * SQL*Plus Command
+* RMAN Command
 * Oracle Cheat Sheet
 
-## Create Listener
+## Create & Delete Listener
 
 * NETCA (Net Configuration Assistant)
 ```bash
@@ -25,12 +26,19 @@ $ cd $ORACLE_HOME/bin/
 $ netca
 ```
 
-## Create Database
+## Create & Delete Database
 
 * DBCA (Database Configuration Assistant)
 ```bash
 $ cd $ORACLE_HOME/bin/
 $ ./dbca
+```
+
+* Database Template
+```bash
+- Transaction Processing (Default)      Include Datafiles
+- Custom Database                       Not Include Datafiles
+- Data Warehouse                        Include Datafiles
 ```
 
 * Database Character Set
@@ -48,13 +56,23 @@ $ cd $ORACLE_BASE/admin/$ORACLE_SID/scripts
 $ cd $ORACLE_HOME/bin
 ```
 
+* Delete Database
+```bash
+$ cd $ORACLE_HOME/bin/
+$ ./dbca
+$ rm -rf /etc/oratab
+```
+
 ## Create Alias
 ```bash
 $ vi .bash_profile
 -----------------------------
+alias archive='cd /u01/app/oracle/flash_recovery_area/$ORACLE_SID/'
 alias network='cd $ORACLE_HOME/network/admin'
 alias trace='cd $ORACLE_BASE/diag/rdbms/$ORACLE_SSID/$ORACLE_SID/'
 
+alias gg='cd /data/ggate'
+alias RMAN_LOG='cd /usr/openv/netbackup/ext/db_ext/oracle/samples/rman'
 alias alert='tail -100 $DBA/$ORACLE_SID/bdump/alert_$ORACLE_SID.log|more'
 alias arch='cd $DBA/$ORACLE_SID/arch'
 alias bdump='cd $DBA/$ORACLE_SID/bdump'
@@ -70,6 +88,12 @@ $ . ~/.bash_profile
 ```
 
 ## SQL*Plus Command
+
+#### SET
+```bash
+SQL> set pages 100
+SQL> set lines 120
+```
 
 #### Access Database
 * Access not login
@@ -110,12 +134,37 @@ SQL> show user ;
 
 * Check Instance
 ```bash
-SQL> select instance_name, status from v$instance ;
+SQL> SELECT INSTANCE_NAME, STATUS FROM V$INSTANCE ;
 ```
 
-* Check Date
+* Check Open Mode
+```bash
+SQL> SELECT NAME, OPEN_MODE FROM V$DATABASE ;
+```
+
+#### Check Date
 ```bash
 SQL> select sysdate from dual ;
+```
+
+#### Check Features
+```bash
+SQL> select name, detected_usages from dba_feature_usage_statistics where detected_usages > 0 ;
+```
+
+#### Check Character SET
+```bash
+SQL> select * from nls_database_parameters ;
+```
+
+#### Check Session
+```bash
+SQL> select * from v$lock ;
+```
+
+### Check Jobs Status
+```bash
+SQL> select job, log_user, schema_user, failures from dba_jobs ;
 ```
 
 #### Check Views and Tables Database
@@ -130,6 +179,19 @@ SQL> select count(object_id) as sum, owner from all_objects where object_type = 
 SQL> select count(object_id) as sum, owner from all_objects where object_type = 'VIEW' group by owner ;
 ```
 
+#### Check Sequence Number
+```bash
+http://www.dba-oracle.com/t_oracle_nextval_function.htm
+SQL>
+```
+
+#### Check Archive Log
+```bash
+SQL> archive log list
+SQL> show parameter db_recovery_file_dest
+SQL> select dest_name, status, destination from v$archive_dest ;
+```
+
 #### Show Parameters
 * Show Parameter
 ```bash
@@ -140,6 +202,8 @@ SQL> show parameter process
 * Show SGA
 ```bash
 SQL> show sga
+SQL> select name, value/1024/1024 "SGA (MB)" from v$sga ;
+SQL> select sum(value)/1024/1024 "TOTAL SGA (MB)" from v$sga ;
 ```
 
 * Show Database Buffer Cache
@@ -155,6 +219,13 @@ SQL> show shared_pool_size
 * Show Redo Log Buffer
 ```bash
 SQL> show log_buffer
+```
+
+#### Resize Parameter
+* Resize FRA
+```bash
+SQL> show parameter db_recovery_file_dest_size
+SQL> alter system set db_recovery_file_dest_size = 20g scope=both sid='*';
 ```
 
 #### Manage Users
@@ -196,6 +267,12 @@ SQL> alter user demo identified by 1234 ;
 ```
 
 ## Manage Object
+* Show Object
+```bash
+SQL> select count(object_name), object_type from dba_objects where owner like 'MEISPSN' group by object_type ;
+SQL> select count(object_name), object_type from dba_objects where owner like 'HRIS' group by object_type ;
+```
+
 * Create Synonym
 ```bash
 SQL> create synonym emp for scott.emp ;
@@ -227,6 +304,36 @@ SQL> history [number] edit
 SQL> clear history
 ```
 
+## RMAN Command
+
+* Report Schema
+```bash
+RMAN> report schema ;
+
+using target database control file instead of recovery catalog
+Report of database schema for database with db_unique_name MEIS
+
+List of Permanent Datafiles
+===========================
+File Size(MB) Tablespace           RB segs Datafile Name
+---- -------- -------------------- ------- ------------------------
+1    670      SYSTEM               ***     /u01/app/oracle/oradata/MEIS/system01.dbf
+2    470      SYSAUX               ***     /u01/app/oracle/oradata/MEIS/sysaux01.dbf
+3    25       UNDOTBS1             ***     /u01/app/oracle/oradata/MEIS/undotbs01.dbf
+4    5        USERS                ***     /u01/app/oracle/oradata/MEIS/users01.dbf
+
+List of Temporary Files
+=======================
+File Size(MB) Tablespace           Maxsize(MB) Tempfile Name
+---- -------- -------------------- ----------- --------------------
+1    20       TEMP                 32767       /u01/app/oracle/oradata/MEIS/temp01.dbf
+```
+
+* Report Backup
+```bash
+RMAN> list backup summary ;
+```
+
 ## Oracle Cheat Sheet
 
 * LISTENER
@@ -234,11 +341,7 @@ SQL> clear history
 lsnrctl status
 lsnrctl start
 lsnrctl stop
-```
-
-* TNSPING
-```bash
-tnsping orcl
+lsnrctl reload
 ```
 
 * Enterprise Manager
@@ -249,12 +352,17 @@ emctl stop dbconsole
 emctl getemhome
 ```
 
-* Alert Log
+* CRSCTL
 ```bash
-$ORACLE_BASE/diag/rdbms/orcl/orcl/trace/alert_orcl.log
+
 ```
 
-* TNSNAMES
+* TNSPING
+```bash
+tnsping orcl
+```
+
+* TNSNAMES Parameter File
 ```bash
 $ORACLE_HOME/network/admin/tnsnames.ora
 
@@ -268,7 +376,15 @@ ORCL =
   )
 ```
 
-* LISTENER
+* TNS Parameter File
+```bash
+$ORACLE_HOME/network/admin/sqlnet.ora
+
+# Add oracle dead connection detect(send small packet check every 4 mins.)
+SQLNET.EXPIRE_TIME = 4
+```
+
+* LISTENER Parameter File
 ```bash
 $ORACLE_HOME/network/admin/listener.ora
 
@@ -280,6 +396,11 @@ LISTENER =
   )
 
 ADR_BASE_LISTENER = /u01/app/oracle
+```
+
+* Alert Log
+```bash
+$ORACLE_BASE/diag/rdbms/orcl/orcl/trace/alert_orcl.log
 ```
 
 * Uninstall
@@ -294,11 +415,24 @@ $ORACLE_HOME/deinstall/deinstall
 ไม่สามารถ Start Listener ได้ ให้ไปดูที่ไฟล์ listener ว่า config hostname และ port ถูกต้องหรือไม่
 ```
 
-* Filed Start Database (pfile)
+* Failed Start Database (pfile)
 ```bash
 ไม่สามารถ Start Database ได้ ให้ไปสร้างไฟล์ pfile จาก spfile
 
 create pfile from spfile='/u01/app/oracle/product/11.2.0/db_1/dbs/spfileorcl.ora' ;
+```
+
+* Failed Start Database (Memory)
+```bash
+ไม่สามารถ Start Database ได้ เนื่องจาก Memory ไม่พอ ให้ไป Stop Database ใน Instance อื่น เพื่อเรียกคืน Memory หรือไม่งั้นก็ต้องเพิ่ม Physical Memory แล้วทำการ Start Database อีกครั้งหนึ่ง
+```
+
+* Failed Import Data Pump (Bigfile Tablespace)
+```bash
+Default Tablespace จะสร้างเป็น Smallfile Tablespace (SFT) หลาย ๆ ไฟล์
+Bigfile Tabelspace Benefits
+- ง่ายในการจัดการ Tablespace บน Database ขนาดใหญ่
+- ง่ายในการจัดการ Datafiles ด้วย Oracle-Managed Files และ 
 ```
 
 * Failed Start Enterprise Manager
@@ -325,3 +459,6 @@ Linux-x86_64 Error: 2: No such file or directory
 ## Credit
 http://www.dba-oracle.com/
 https://docs.oracle.com/cd/B28359_01/em.111/b31207/oui7_opatch.htm#CEGCJGJD
+http://shop.oreilly.com/product/9781565925168.do
+https://www.scribd.com/document/342208114/57114599-ORACLE-DBA-Activity-Checklist-pdf
+https://www.scribd.com/document/17335826/Important-Oracle-Query-Script

@@ -51,10 +51,10 @@ impdp \"/ as sysdba\" dumpfile=[file_name].dmp logfile=[table_name].log full=yes
 This action of import data when the table already exists in the database, the default value is skip.
 ```bash
 TABLE_EXISTS_ACTION = {SKIP | APPEND | TRUNCATE | REPLACE}
-- SKIP (Default)    skip table already exists in the database, not best practise if you set content=data_only
-- APPEND            append is add new rows from dmp file, number and type of data must match
-- TRUNCATE
-- REPLACE
+- SKIP (Default)    skip table already exists in the database, it is invalid if you set content=data_only
+- APPEND            add new rows but number and type of data must match, it is default when you set content=data_only
+- TRUNCATE          replace rows when columns of data not match, not use with db link or cluster table
+- REPLACE           replace definition and rows when columns of data not match
 ```
 
 ## Credit
