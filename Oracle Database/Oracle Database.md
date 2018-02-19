@@ -36,9 +36,9 @@ $ ./dbca
 
 * Database Template
 ```bash
-- Transaction Processing (Default)      Include Datafiles
-- Custom Database                       Not Include Datafiles
-- Data Warehouse                        Include Datafiles
+- Transaction Processing (Default)      include datafiles
+- Custom Database                       not include datafiles
+- Data Warehouse                        include datafiles
 ```
 
 * Database Character Set
@@ -269,8 +269,7 @@ SQL> alter user demo identified by 1234 ;
 ## Manage Object
 * Show Object
 ```bash
-SQL> select count(object_name), object_type from dba_objects where owner like 'MEISPSN' group by object_type ;
-SQL> select count(object_name), object_type from dba_objects where owner like 'HRIS' group by object_type ;
+SQL> select count(object_name), object_type from dba_objects where owner like group by object_type ;
 ```
 
 * Create Synonym
@@ -311,22 +310,22 @@ SQL> clear history
 RMAN> report schema ;
 
 using target database control file instead of recovery catalog
-Report of database schema for database with db_unique_name MEIS
+Report of database schema for database with db_unique_name orcl
 
 List of Permanent Datafiles
 ===========================
 File Size(MB) Tablespace           RB segs Datafile Name
 ---- -------- -------------------- ------- ------------------------
-1    670      SYSTEM               ***     /u01/app/oracle/oradata/MEIS/system01.dbf
-2    470      SYSAUX               ***     /u01/app/oracle/oradata/MEIS/sysaux01.dbf
-3    25       UNDOTBS1             ***     /u01/app/oracle/oradata/MEIS/undotbs01.dbf
-4    5        USERS                ***     /u01/app/oracle/oradata/MEIS/users01.dbf
+1    670      SYSTEM               ***     /u01/app/oracle/oradata/orcl/system01.dbf
+2    470      SYSAUX               ***     /u01/app/oracle/oradata/orcl/sysaux01.dbf
+3    25       UNDOTBS1             ***     /u01/app/oracle/oradata/orcl/undotbs01.dbf
+4    5        USERS                ***     /u01/app/oracle/oradata/orcl/users01.dbf
 
 List of Temporary Files
 =======================
 File Size(MB) Tablespace           Maxsize(MB) Tempfile Name
 ---- -------- -------------------- ----------- --------------------
-1    20       TEMP                 32767       /u01/app/oracle/oradata/MEIS/temp01.dbf
+1    20       TEMP                 32767       /u01/app/oracle/oradata/orcl/temp01.dbf
 ```
 
 * Report Backup
@@ -335,6 +334,23 @@ RMAN> list backup summary ;
 ```
 
 ## Oracle Cheat Sheet
+
+* Firewall
+```bash
+service iptables start
+chkconfig iptables on
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp --dport 1158 -j ACCEPT
+iptables -A INPUT -p tcp --dport 1521 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5501 -j ACCEPT
+chkconfig --level 345 iptables on
+service iptables save
+service iptables status
+
+iptables -D INPUT 11
+
+https://oracle-base.com/articles/linux/linux-firewall
+```
 
 * LISTENER
 ```bash
