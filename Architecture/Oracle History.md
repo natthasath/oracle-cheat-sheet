@@ -1,5 +1,5 @@
 # Oracle History
-Oracle เป็น Database 
+
 ```bash
 
 ```

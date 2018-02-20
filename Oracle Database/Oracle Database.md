@@ -5,7 +5,6 @@ Documentation for Oracle DBA beginner
 ```
 
 # Table of Content
-
 * Create & Delete Listener
 * Create & Delete Database
 * Create Alias
@@ -19,7 +18,6 @@ Documentation for Oracle DBA beginner
 * Oracle Cheat Sheet
 
 ## Create & Delete Listener
-
 * NETCA (Net Configuration Assistant)
 ```bash
 $ cd $ORACLE_HOME/bin/
@@ -27,7 +25,6 @@ $ netca
 ```
 
 ## Create & Delete Database
-
 * DBCA (Database Configuration Assistant)
 ```bash
 $ cd $ORACLE_HOME/bin/
@@ -98,12 +95,13 @@ SQL> set lines 120
 #### Access Database
 * Access not login
 ```bash
-sqlplus /nolog
+$ sqlplus
+$ sqlplus /nolog
 ```
 
 * Access login as sysdba
 ```bash
-sqlplus / as sysdba
+$ sqlplus / as sysdba
 ```
 
 * Connect Database in SQL*Plus
@@ -134,12 +132,17 @@ SQL> show user ;
 
 * Check Instance
 ```bash
-SQL> SELECT INSTANCE_NAME, STATUS FROM V$INSTANCE ;
+SQL> select instance_name, status from v$instance ;
 ```
 
 * Check Open Mode
 ```bash
-SQL> SELECT NAME, OPEN_MODE FROM V$DATABASE ;
+SQL> select name, open_mode from v$database ;
+```
+
+* Check Datafile
+```bash
+SQL> select name from v$datafile ;
 ```
 
 #### Check Date
@@ -304,7 +307,6 @@ SQL> clear history
 ```
 
 ## RMAN Command
-
 * Report Schema
 ```bash
 RMAN> report schema ;
@@ -334,7 +336,6 @@ RMAN> list backup summary ;
 ```
 
 ## Oracle Cheat Sheet
-
 * Firewall
 ```bash
 service iptables start
@@ -354,18 +355,18 @@ https://oracle-base.com/articles/linux/linux-firewall
 
 * LISTENER
 ```bash
-lsnrctl status
-lsnrctl start
-lsnrctl stop
-lsnrctl reload
+$ lsnrctl status
+$ lsnrctl start
+$ lsnrctl stop
+$ lsnrctl reload
 ```
 
 * Enterprise Manager
 ```bash
-emctl status dbconsole
-emctl start dbconsole
-emctl stop dbconsole
-emctl getemhome
+$ emctl status dbconsole
+$ emctl start dbconsole
+$ emctl stop dbconsole
+$ emctl getemhome
 ```
 
 * CRSCTL
@@ -375,7 +376,7 @@ emctl getemhome
 
 * TNSPING
 ```bash
-tnsping orcl
+$ tnsping orcl
 ```
 
 * TNSNAMES Parameter File
@@ -425,7 +426,6 @@ $ORACLE_HOME/deinstall/deinstall
 ```
 
 ## Failed Error
-
 * Failed Start Listener
 ```bash
 ไม่สามารถ Start Listener ได้ ให้ไปดูที่ไฟล์ listener ว่า config hostname และ port ถูกต้องหรือไม่
@@ -445,10 +445,7 @@ create pfile from spfile='/u01/app/oracle/product/11.2.0/db_1/dbs/spfileorcl.ora
 
 * Failed Import Data Pump (Bigfile Tablespace)
 ```bash
-Default Tablespace จะสร้างเป็น Smallfile Tablespace (SFT) หลาย ๆ ไฟล์
-Bigfile Tabelspace Benefits
-- ง่ายในการจัดการ Tablespace บน Database ขนาดใหญ่
-- ง่ายในการจัดการ Datafiles ด้วย Oracle-Managed Files และ 
+
 ```
 
 * Failed Start Enterprise Manager

@@ -1,5 +1,5 @@
 # Database Model
-ฐานข้อมูล 
+
 * Hierarchy
 * Structure
 * Relational
@@ -33,3 +33,5 @@ Structure English Query Language (SEQUEL -> SQL) is OOP Database
 * Search example FaceID
 
 ## Relational
+
+## Credit
