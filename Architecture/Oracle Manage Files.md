@@ -1,10 +1,8 @@
 # Oracle Manage Files
 Oracle Manage Files (OMF) จะเป็นตัวจัดการไฟล์ในระดับ Object Level เมื่อเราทำการสร้างออบเจ็กต์ เช่น สร้าง Tablespace ตัว OMF จะเป็นตัวจัดการชื่อและไดเรกทอรี่ของ Datafile ให้โดยอัตโนมัติ โดยใช้ระบบไฟล์มาตรฐานของ Oracle Database แต่จะไม่สามารถใช้กับไฟล์ เช่น Trace File, Audit File, Alert Log และ Core File และยังสามารถทำงานร่วมกับ
 
-์Note: Automatic Storage Management (ASM)
-```bash
+#### Note: Automatic Storage Management (ASM)
 ในการทำ Extend File System และ Volume Manager ตัว OMF สามารถทำได้โดยอัตโนมัติ แต่กับระบบที่เป็น ASM จะเพิ่มความสามารถในการทำ Striping (RAID), Software Mirroring และ Dynamic Storage Configuration โดยไม่จำเป็นต้องเสียเงินซื้อ Third-Party ที่เป็น Logical Volume Manager
-```
 
 # Table of ContentLVM
 * Standard File System
