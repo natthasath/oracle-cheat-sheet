@@ -84,5 +84,10 @@ scp orcl.dmp oracle@ol6.lab.local:/u01/app/oracle/admin/orcl/dpdump
 impdp \"/ as sysdba\" DUMPFILE=orcl.dmp LOGFILE=export_orcl.log FULL=YES ;
 ```
 
+## Disable Firewall
+```bash
+setup
+```
+
 ## Credit
 http://www.dba-oracle.com/tips_oracle_export_utility.htm

@@ -90,6 +90,8 @@ $ . ~/.bash_profile
 ```bash
 SQL> set pages 100
 SQL> set lines 120
+SQL> set linesize 300
+SQL> column column_name format a30
 ```
 
 #### Access Database
@@ -145,6 +147,12 @@ SQL> select name, open_mode from v$database ;
 SQL> select name from v$datafile ;
 ```
 
+* Check Control File
+```bash
+SQL> select name from v$log ;
+SQL> select group#, status from v$log;
+```
+
 #### Check Date
 ```bash
 SQL> select sysdate from dual ;
@@ -193,6 +201,23 @@ SQL>
 SQL> archive log list
 SQL> show parameter db_recovery_file_dest
 SQL> select dest_name, status, destination from v$archive_dest ;
+```
+
+#### Check DB Size
+```bash
+SQL> select sum(bytes)/1024/1024 size_in_mb from dba_data_files ;
+SQL> select sum(bytes)/1024/1024 size_in_mb from dba_segments ;
+SQL> select owner, sum(bytes)/1024/1024 Size_MB from dba_segments group  by owner ;
+```
+
+#### Check License
+```bash
+SQL> select name, version, description, detected_usages, last_usage_date from dba_feature_usage_statistics where name like 'Automatic Workload%' or name like 'AWR%';
+```
+
+#### Check Version
+```bash
+SQL> select * from v$version ;
 ```
 
 #### Show Parameters
