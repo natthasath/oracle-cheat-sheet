@@ -6,7 +6,6 @@ Documentation for Oracle DBA beginner
 
 # Table of Content
 #### Architecture
-```bash
 * [Database Model]
 * [Oracle History]
 * [Oracle Database Version]
@@ -37,4 +36,3 @@ Documentation for Oracle DBA beginner
 
 ## License
 Webneena license.
-```
