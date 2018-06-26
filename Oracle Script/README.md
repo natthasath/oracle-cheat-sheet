@@ -9,24 +9,33 @@ Documentation for Oracle Script
 * Run SQL Script
 * Cron Job
 
-#### Check Path Script
-* [Preinstall]
-* [Download and Install]
-* [Config]
+## Check Path Script
 
-#### Export/Import Oracle Database
-* [Data Pump]
-* [RMAN]
-* [Golden Gate]
+* Locate
+```
+locate [option] [filename]
+ -b --basename  :use patterns is search by match only
+ -r --regexp    :no use patterns is search by relular expression
+```
 
-#### DBA Check List
-* 
+* Print Working Directory
+```
+pwd [option]
+ -L --logical   :absolute path or symbolic links
+ -P --physical  :relative path or hard links
+```
 
-#### Oracle Command
-* Start Database
-* Shutdown Database
+## Run SQL Script
 
-#### Oracle Certificate
+* Login SQL*Plus
+```
+$ sqlplus / as sysdba
+```
+
+* Run Script in SQL*Plus
+```
+SQL> @/home/oracle/script.sql
+```
 
 ## License
 Codeinsane license.

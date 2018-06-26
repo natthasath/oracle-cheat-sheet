@@ -107,7 +107,7 @@ netstat -anp | grep port_number
 * Create Directory
 ```bash
 mkdir [option] [name]
- -m --mode		    :set permission file mode (chmod)
+ -m --mode          :set permission file mode (chmod)
  -p --parent		:make parent directory (relative and absolute path)
  -v --verbose		:print message
  -z --context=CTX	:set SELinux security
