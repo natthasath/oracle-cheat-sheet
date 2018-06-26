@@ -17,5 +17,8 @@ $ORACLE_HOME/bin/emctl
 * [List](Link)
 * [List](Link)
 
-## Refernces
+## Credit
 http://www.oracle.com/ocom/groups/public/@otn/documents/webcontent/241652.htm
+
+## License
+Codeinsane license.

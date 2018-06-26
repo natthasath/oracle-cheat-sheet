@@ -1,5 +1,5 @@
-# Oracle Cheat Sheet
-Documentation for Oracle DBA beginner
+# Oracle Cloud Day 2018
+Documentation for Oracle Cloud Day 2018
 ```bash
 
 ```
@@ -35,4 +35,4 @@ Documentation for Oracle DBA beginner
 #### Oracle Certificate
 
 ## License
-Webneena license.
+Codeinsane license.

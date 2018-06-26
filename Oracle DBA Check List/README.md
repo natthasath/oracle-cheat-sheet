@@ -124,3 +124,6 @@ Description job all task of Oracle Database Administrator (DBA) for check list s
 
 ## Credit
 http://durga-kar.blogspot.com/2014/04/dba-checklist-activities-of-oracle-dba.html
+
+## License
+Codeinsane license.

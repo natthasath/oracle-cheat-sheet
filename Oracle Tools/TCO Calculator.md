@@ -6,3 +6,6 @@ TCO Calculator เป็นเครื่องมือของ Oracle ที
 * [Oracle Cloud](https://cloud.oracle.com/tryit?intcmp=ocom-hp-asiasouth-0118)
 
 ![](/Images/02.png)
+
+## License
+Codeinsane license.

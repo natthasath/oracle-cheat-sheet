@@ -1,5 +1,5 @@
 # Oracle Blog
-รวมเว็บไซต์ของทาง Oracle และบล็อกต่าง ๆ ทั้งภาษาไทยและภาษาอังกฤษ
+Documentation for website and blog both Thai & English Language
 
 # Table of Content
 * Thai
@@ -7,7 +7,7 @@
 * Oracle
 * Service
 
-#### TH
+#### Thai
 * [Oracle For Thai](http://oraclethai.blogspot.com/)
 * [Tanakorn Blog](http://tanakornt.blogspot.com/)
 * [Siamnobita Blog](https://siamnobita.wordpress.com/)
@@ -15,7 +15,7 @@
 * [Thaitechnet Blog](http://www.thaitechnet.com/commu/)
 * [Sysadmin Blog](https://sysadmin.psu.ac.th/)
 
-#### EN
+#### English
 * [Burleson Consulting Blog](http://www.dba-oracle.com/)
 * [Gokhan Atil’s Blog](http://gokhanatil.com/category/oracle)
 * [Pubudu s’ Blog](http://orapubs.blogspot.com/?m=0)

@@ -172,4 +172,5 @@ $ORACLE_HOME/ol6.lab.local_DB11G
 หากยังไม่ได้ให้ทำการ Rebuild Enterprise Manager
 ```
 
-## Credit
+## License
+Codeinsane license.

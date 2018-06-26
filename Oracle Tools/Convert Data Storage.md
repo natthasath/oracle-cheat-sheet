@@ -28,3 +28,6 @@ Description
 
 ## Credit
 http://gowww.convert-units.info/data-storage/gigabyte/2.684375E-10
+
+## License
+Codeinsane license.

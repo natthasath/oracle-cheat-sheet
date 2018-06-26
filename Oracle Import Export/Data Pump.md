@@ -59,3 +59,6 @@ TABLE_EXISTS_ACTION = {SKIP | APPEND | TRUNCATE | REPLACE}
 
 ## Credit
 https://oracle-base.com/articles/10g/oracle-data-pump-10g
+
+## License
+Codeinsane license.

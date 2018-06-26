@@ -500,3 +500,6 @@ https://docs.oracle.com/cd/B28359_01/em.111/b31207/oui7_opatch.htm#CEGCJGJD
 http://shop.oreilly.com/product/9781565925168.do
 https://www.scribd.com/document/342208114/57114599-ORACLE-DBA-Activity-Checklist-pdf
 https://www.scribd.com/document/17335826/Important-Oracle-Query-Script
+
+## License
+Codeinsane license.

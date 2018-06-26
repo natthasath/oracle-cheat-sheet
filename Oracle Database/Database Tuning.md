@@ -18,4 +18,4 @@ Description
 * [List](Link)
 
 ## License
-Webneena license.
+Codeinsane license.

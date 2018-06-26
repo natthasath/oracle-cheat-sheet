@@ -35,4 +35,4 @@ Documentation for Oracle DBA beginner
 #### Oracle Certificate
 
 ## License
-Webneena license.
+Codeinsane license.

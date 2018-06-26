@@ -29,4 +29,4 @@ Documentation for Oracle Script
 #### Oracle Certificate
 
 ## License
-Webneena license.
+Codeinsane license.

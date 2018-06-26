@@ -18,4 +18,4 @@ Documentation for Oracle DBA beginner
 * Database Cloud
 
 ## License
-Webneena license.
+Codeinsane license.

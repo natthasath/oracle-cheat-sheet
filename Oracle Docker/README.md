@@ -1,5 +1,5 @@
 # Oracle Docker
-Documentation for Oracle DBA beginner
+Documentation for Oracle Docker
 ```bash
 
 ```
@@ -46,10 +46,10 @@ rm: cannot remove Device or resource busy
 # rm -rf /var/lib/docker
 ```
 
+## Credit
 http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html
 http://www.oracle.com/technetwork/database/enterprise-edition/downloads/oracle12c-linux-12201-3608234.html
+https://sqlmaria.com/2017/04/27/oracle-database-12c-now-available-on-docker/
 
 ## License
-Webneena license.
-
-https://sqlmaria.com/2017/04/27/oracle-database-12c-now-available-on-docker/
+Codeinsane license.

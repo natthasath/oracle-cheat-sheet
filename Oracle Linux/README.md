@@ -1,10 +1,11 @@
 ﻿# Oracle Linux
-Documentation for Oracle DBA beginner
+Documentation for Oracle Linux 6.8+
 ```bash
 
 ```
 
 # Table of Content
+
 * Download
 * System Requirement
 * Pre-Install Oracle Database
@@ -13,6 +14,7 @@ Documentation for Oracle DBA beginner
 * Command Cheat Sheet
 
 ## Download
+
 Oracle Linux เป็น Distribution หนึ่งของ Linux based on Red Hat ที่สามารถ Download ได้ฟรี ปัจจุบันเป็น Oracle Linux Version 7 แล้ว สามารถใช้งานร่วมกับ Docker, Vagrant
 หรือจะโหลดเป็น Hands-On Labs สามารถ Donload ผ่านทาง [Oracle Software Delivery Cloud](https://edelivery.oracle.com/osdc/faces/SoftwareDelivery)
 โดยเลือก Version และสถาปัตยกรรม 32-bit หรือ 64-bit ให้ตรงกับที่เราต้องการ ใน LAB นี้จะติดตั้ง Oracle Linux Version 6.8
@@ -20,10 +22,12 @@ Oracle Linux เป็น Distribution หนึ่งของ Linux based on R
 ![](/Images/01.png)
 
 ## System Requirement
+
 * Memory Minimum 1 GB and Maximum 64 GB
 * Disk Space Mnimum 1 GB and Maximum 4 TB
 
 ## Pre-Install Oracle Database
+
 * Host File (/etc/hosts)
 ```bash
 127.0.0.1       localhost.localdomain  localhost
@@ -78,18 +82,21 @@ CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
 ```
 
 ## Install Oracle Database
-* Run OUI (Oracle Universal Installler)
+
+* Run Oracle Universal Installler (OUI)
 ```bash
 ./runInstaller
 ```
 
 ## Post-Install Oracle Database
+
 * Set Instance
 ```bash
 DB11G:/u01/app/oracle/product/11.2.0/db_1:Y
 ```
 
 ## Command Cheat Sheet
+
 Option short use (-) and long use (--)
 
 * Find Port
@@ -100,20 +107,20 @@ netstat -anp | grep port_number
 * Create Directory
 ```bash
 mkdir [option] [name]
- -m --mode		set permission file mode (chmod)
- -p --parent		make parent directory (relative and absolute path)
- -v --verbose		print message
- -z --context=CTX	set SELinux security
+ -m --mode		    :set permission file mode (chmod)
+ -p --parent		:make parent directory (relative and absolute path)
+ -v --verbose		:print message
+ -z --context=CTX	:set SELinux security
 ```
 
 * Package
 ```bash
-yum update
-yum install
-yum remove
-yum history
-yum clean
-yum list
+# yum update
+# yum install
+# yum remove
+# yum history
+# yum clean
+# yum list
 ```
 
 * Service
@@ -123,24 +130,26 @@ service [name] stop
 service [name] status
 ```
 
-* DTrace (Dynamic Tracing Framework)
+* Network
 ```bash
-https://oss.oracle.com/projects/DTrace/
+vi /etc/sysconfig/network-script/ifcfg-eth0
+```
+
+* Create Alias
+```bash
+vi .bash_profile
+alias [name]='PATH'
+```
+
+* STTY Erase
+```bash
+vi .bash_profile
+stty erase ^H
 ```
 
 ## Credit
 * https://oracle-base.com/articles/linux/oracle-linux-6-installation
 * https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6
 
-
-
-
-
-
-
-
-
-
-
-
-
+## License
+Codeinsane license.

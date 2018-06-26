@@ -91,3 +91,6 @@ setup
 
 ## Credit
 http://www.dba-oracle.com/tips_oracle_export_utility.htm
+
+## License
+Codeinsane license.
