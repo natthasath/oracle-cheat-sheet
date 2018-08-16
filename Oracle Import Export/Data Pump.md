@@ -11,6 +11,11 @@ Data pump is a server based technology which enables very high speed import and 
 * Perform remapping operations on database datafiles
 * Perform remapping operations on schemas other than their own
 
+## Defualt Path
+```bash
+SQL> select directory_name, directory_path from dba_directories where directory_name = 'DATA_PUMP_DIR' ;
+```
+
 ## Table Export/Import
 ```bash
 expdp sys/[password]@orcl tables=[table_name] directory=[directory_name] dumpfile=[table_name].dmp logfile=expdp[table_name].log
