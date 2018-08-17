@@ -1,176 +1,100 @@
-﻿# Oracle Database
-Documentation for Oracle DBA beginner
-```bash
+﻿# Oracle RMAN
+Recovery Manager (RMAN) is an Oracle Database client that performs backup and recovery and automates administration of your backup strategies
 
+## Check Archive Log
+```bash
+SQL> archive log list
 ```
 
-# Table of Content
-
-* Create Database
-* Start Stop Service
-* Network Connection
-* Database Interface
-* Storage Structure
-* User and Security
-* SQL*Plus Command
-* Oracle Cheat Sheet
-
-## SQL*Plus Command
-
-Access SQL*Plus
+## Open Archive Log
 ```bash
-sqlplus /nolog
+SQL> startup mount ;
+SQL> select log_mode from v$database ;
+SQL> alter database archivelog ;
+SQL> alter database open ;
 ```
 
-Connect
+## Check Recovery Size and Destination
 ```bash
-SQL> connect / as sysdba
-SQL> connect sys/[password]@[ORACLE_SID] as sysdba
+SQL> show parameter db_recovery ;
+SQL> select * from V$RECOVERY_FILE_DEST ;
+SQL> select * FROM V$RECOVERY_AREA_USAGE ;
+SQL> alter system set db_recovery_file_dest_size=4070572032 scope=both ;
+SQL> alter system set db_recovery_file_dest_size=8G ;
 ```
 
-Start Database
+## Start RMAN
 ```bash
-SQL> startup
-SQL> startup pfile=''
+$ rman
+RMAN> connect target /
 ```
 
-Stop Database
+## Start RMAN with Target
 ```bash
-SQL> shutdown immediate
+$ rman target /
+$ rman target / nocatelog
 ```
 
-Check Instance
+## Show Configuration
 ```bash
-SQL> select instance_name, status from v$instance ;
+RMAN> show all ;
+
+using target database control file instead of recovery catalog
+RMAN configuration parameters for database with db_unique_name MEIS are:
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 4 DAYS;
+CONFIGURE BACKUP OPTIMIZATION ON;
+CONFIGURE DEFAULT DEVICE TYPE TO DISK;
+CONFIGURE CONTROLFILE AUTOBACKUP OFF;
+CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO '%F'; # default
+CONFIGURE DEVICE TYPE DISK PARALLELISM 8 BACKUP TYPE TO BACKUPSET;
+CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE MAXSETSIZE TO UNLIMITED; # default
+CONFIGURE ENCRYPTION FOR DATABASE OFF; # default
+CONFIGURE ENCRYPTION ALGORITHM 'AES128'; # default
+CONFIGURE COMPRESSION ALGORITHM 'MEDIUM' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD TRUE;
+CONFIGURE ARCHIVELOG DELETION POLICY TO NONE; # default
+CONFIGURE SNAPSHOT CONTROLFILE NAME TO '/oracle/products/11.2.0.2.0/db_1/dbs/snapcf_MEIS.f'; # default
 ```
 
-Show Date
+## Backup Archivelog Mode
 ```bash
-SQL> select sysdate from dual ;
+RMAN> backup database plus archivelog ;
 ```
 
-Show SGA
+## Backup no Archivelog Mode
 ```bash
-SQL> show sga
+RMAN> backup database ;
+RMAN> backup as copy database ;
 ```
 
-Show User tables
+## List Backup Summary
 ```bash
-SQL> select table_name from user_tables order by 1 ;
+RMAN> list backup summary ;
 ```
 
-Show Parameter
+## Fix Error
 ```bash
-SQL> show parameter
-SQL> show parameter process
+ORA-19809: limit exceeded for recovery files
+ORA-19804: cannot reclaim 52428800 bytes disk space from 4070572032 limit
+http://marcel.vandewaters.nl/oracle/database-oracle/ora-19809-limit-exceeded-for-recovery-files
 ```
 
-Show Path Datafile
-```bash
-SQL> select name from v$datafile;
-```
+## Credit
+https://docs.oracle.com/cd/E11882_01/backup.112/e10642/rcmquick.htm#BRADV89350
 
-Create SPfile from Pfile
-```bash
-SQL> create pfile from spfile ;
-```
-
-Update Pfile from SPfile
-```bash
-SQL> create spfile from pfile
-```
-
-History
-```bash
-SQL> set history on
-SQL> show history
-SQL> history [number] run
-SQL> history [number] edit
-SQL> clear history
-```
-
-## Command Cheat Sheet
-
-Listener
-```bash
-lsnrctl status
-lsnrctl start
-lsnrctl stop
-```
-
-TNSPING
-```bash
-tnsping orcl
-```
-
-Enterprise Manager
-```bash
-emctl status dbconsole
-emctl start dbconsole
-emctl stop dbconsole
-emctl getemhome
-```
-
-Alert Log
-```bash
-$ORACLE_BASE/diag/rdbms/orcl/orcl/trace/alert_orcl.log
-```
-
-TNSNAMES
-```bash
-$ORACLE_HOME/network/admin/tnsnames.ora
-
-ORCL =
-  (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = ol6.lab.local)(PORT = 1521))
-    (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = orcl)
-    )
-  )
-```
-
-Listener
-```bash
-$ORACLE_HOME/network/admin/listener.ora
-
-LISTENER =
-  (DESCRIPTION_LIST =
-    (DESCRIPTION =
-      (ADDRESS = (PROTOCOL = TCP)(HOST = ol6.lab.local)(PORT = 1521))
-    )
-  )
-
-ADR_BASE_LISTENER = /u01/app/oracle
-```
-
-Uninstall
-```bash
-$ORACLE_HOME/deinstall/deinstall
-```
-
-## Failed Error
-
-Failed Start Listener
-```bash
-ไม่สามารถ Start Listener ได้ ให้ไปดูที่ไฟล์ listener ว่า config hostname และ port ถูกต้องหรือไม่
-```
-
-Filed Start Database (pfile)
-```bash
-ไม่สามารถ Start Database ได้ ให้ไปสร้างไฟล์ pfile จาก spfile
-
-create pfile from spfile='/u01/app/oracle/product/11.2.0/db_1/dbs/spfileorcl.ora' ;
-```
-
-Failed Start Enterprise Manager
-```bash
-ไม่สามารถ Start Enterprise Manager ได้ ให้ไปแก้ชื่อไฟล์ 2 ที่ ของเดิม hostname เป็น localdomain และ ORACLE_SID เป็น orcl
-$ORACLE_HOME/oc4j/j2ee/OC4J_DBConsole_ol6.lab.local_DB11G/
-$ORACLE_HOME/ol6.lab.local_DB11G
-
-หากยังไม่ได้ให้ทำการ Rebuild Enterprise Manager
-```
+http://www.scsi.co.th/home/15/index.php?option=com_content&view=article&id=71:oracle----archive-log&catid=36:database&Itemid=63
 
 ## License
 Codeinsane license.
+
+
+## RMAN History Command
+```bash
+SQL> select sid, recid, output from v$rman_output order by recid
+```
+
+## RMAN Session and Status
+```bash
+SQL> select session_key, INPUT_TYPE, STATUS, to_char(START_TIME,'mm/dd/yy hh24:mi') start_time, to_char(END_TIME,'mm/dd/yy hh24:mi') end_time, elapsed_seconds/3600 hrs from V$RMAN_BACKUP_JOB_DETAILS order by session_key;
+```
