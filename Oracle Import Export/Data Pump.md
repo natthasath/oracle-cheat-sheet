@@ -1,8 +1,9 @@
 ﻿# Oracle Data Pump
-Data pump is a server based technology which enables very high speed import and export data (expdp / impdp)
-```bash
+Oracle Data Pump is a new and unique feature of Oracle Database 11g Release 2. A new public interface package, DBMS_DATAPUMP, provides a server-side infrastructure for fast data and metadata movement between Oracle databases. It is ideal for large databases and data warehousing environments, where high-performance data movement offers significant time savings to database administrators.
 
-```
+Data Pump automatically manages multiple, parallel streams of unload and load for maximum throughput. The degree of parallelism can be adjusted on-the-fly. There are new and easy-to-use Export and Import utilities (expdp and impdp), as well as a web-based Enterprise Manager export/import interface.
+
+Data Pump is an integral feature of Oracle Database 11g Release 2 and is available in all configurations. However, parallelism is available only in Enterprise Edition.
 
 ## Privileged users
 * Export and import database objects owned by others

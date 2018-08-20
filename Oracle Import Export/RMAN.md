@@ -78,6 +78,7 @@ RMAN> list backup summary ;
 ORA-19809: limit exceeded for recovery files
 ORA-19804: cannot reclaim 52428800 bytes disk space from 4070572032 limit
 http://marcel.vandewaters.nl/oracle/database-oracle/ora-19809-limit-exceeded-for-recovery-files
+http://www.dbas-oracle.com/2011/06/ora-19809-limit-exceeded-for-recovery.html
 ```
 
 ## Credit
