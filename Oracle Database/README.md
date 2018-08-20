@@ -149,7 +149,6 @@ SQL> select name from v$datafile ;
 
 * Check Control File
 ```bash
-SQL> select name from v$log ;
 SQL> select group#, status from v$log ;
 ```
 
