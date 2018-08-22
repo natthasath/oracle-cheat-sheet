@@ -330,6 +330,12 @@ SQL> history [number] edit
 SQL> clear history
 ```
 
+## Trips & Tricks
+* Column Format
+```bash
+SQL> column [column_name] format [a15, a30, a50...]
+```
+
 ## RMAN Command
 * Report Schema
 ```bash
