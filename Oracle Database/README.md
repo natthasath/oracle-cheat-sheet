@@ -8,6 +8,7 @@ Documentation for Oracle DBA beginner
 * Create & Delete Listener
 * Create & Delete Database
 * Create Alias
+
 * Start Stop Service
 * Network Connection
 * Database Interface
@@ -172,7 +173,7 @@ SQL> select * from nls_database_parameters ;
 SQL> select * from v$lock ;
 ```
 
-### Check Jobs Status
+#### Check Jobs Status
 ```bash
 SQL> select job, log_user, schema_user, failures from dba_jobs ;
 ```
@@ -293,7 +294,7 @@ SQL> select tablespace_name from user_tablespaces ;
 SQL> alter user demo identified by 1234 ;
 ```
 
-## Manage Object
+#### Manage Object
 * Show Object
 ```bash
 SQL> select count(object_name), object_type from dba_objects where owner like group by object_type ;
@@ -330,7 +331,7 @@ SQL> history [number] edit
 SQL> clear history
 ```
 
-## Trips & Tricks
+#### Trips & Tricks
 * Column Format
 ```bash
 SQL> column [column_name] format [a15, a30, a50...]
